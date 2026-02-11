@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasir Laghari | AI Automation Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.15);
+            --secondary: #0ea5e9;
+            --dark: #0f172a;
+            --slate: #475569;
+            --light-bg: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .resume-card {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- MODERN HEADER --- */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 60px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 40px;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            transform: rotate(-3deg);
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .header-info h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .header-info .title-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .contact-grid {
+            display: flex;
+            gap: 24px;
+            font-size: 13px;
+            opacity: 0.8;
+            flex-wrap: wrap;
+        }
+
+        /* --- CONTENT LAYOUT --- */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+        }
+
+        .sidebar {
+            background: #fdfdfd;
+            padding: 40px;
+            border-right: 1px solid var(--border);
+        }
+
+        .content-area {
+            padding: 60px;
+        }
+
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* --- SKILLS & TAGS --- */
+        .skill-group {
+            margin-bottom: 32px;
+        }
+
+        .skill-bar-container {
+            margin-bottom: 15px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: #f1f5f9;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            color: var(--slate);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+
+        .tag:hover {
+            background: white;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* --- TIMELINE --- */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-glow);
+            z-index: 2;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            bottom: -40px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .job-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--dark);
+        }
+
+        .job-company {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            display: block;
+        }
+
+        .job-date {
+            font-size: 11px;
+            color: var(--slate);
+            font-weight: 600;
+            background: #f1f5f9;
+            padding: 3px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .job-desc {
+            font-size: 14px;
+            color: var(--slate);
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .job-desc li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+        }
+
+        .job-desc li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        /* --- PROJECT CARDS --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .project-header {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        /* --- PRINT OPTIMIZATION --- */
+        @media print {
+            body { background: white; padding: 0; }
+            .resume-card { box-shadow: none; border-radius: 0; max-width: 100%; }
+            .header { background: #000 !important; -webkit-print-color-adjust: exact; padding: 40px; }
+            .sidebar { padding: 20px; }
+            .content-area { padding: 40px; }
+            .job-date { background: #eee !important; border: 1px solid #ccc; }
+        }
+
+        @media (max-width: 900px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+            .header { flex-direction: column; text-align: center; padding: 40px; }
+            .contact-grid { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-card">
+        <!-- HEADER SECTION -->
+        <header class="header">
+            <img src="profile_image.png" alt="Yasir Laghari" class="profile-img">
+            <div class="header-info">
+                <span class="title-tag">AI Automation Architect • Marketing Specialist</span>
+                <h1>YASIR LAGHARI</h1>
+                <div class="contact-grid">
+                    <span>📧 yasirlaghariofficial@gmail.com</span>
+                    <span>📱 +92 332 2633360</span>
+                    <span>📍 Bahria Town, Karachi</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                
+                <div class="skill-group">
+                    <h3 class="section-label">Core Skills</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Prompt Engineering</span><span>99%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 99%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>AI Automation</span><span>98%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 98%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Digital Marketing</span><span>96%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 96%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Web Development</span><span>94%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 94%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Business Management</span><span>93%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 93%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Social Media Mgmt</span><span>92%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Photography</span><span>88%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3 class="section-label">Tech Stack</h3>
+                    <div style="font-size: 11px; font-weight: 700; color: var(--slate); margin-bottom: 8px;">AI & AUTOMATION</div>
+                    <div class="tag-cloud">
+                        <span class="tag">Lovable</span> <span class="tag">Bolt</span> <span class="tag">OpenAI</span> 
+                        <span class="tag">Claude</span> <span class="tag">n8n</span> <span class="tag">Make.com</span> <span class="tag">Zapier</span>
+                    </div>
+                    
+                    <div style="font-size: 11px; font-weight: 700; color: var(--slate); margin: 15px 0 8px;">WEB & MARKETING</div>
+                    <div class="tag-cloud">
+                        <span class="tag">WordPress</span> <span class="tag">WooCommerce</span> <span class="tag">JavaScript</span> 
+                        <span class="tag">PHP</span> <span class="tag">Webflow</span> <span class="tag">GoHighLevel</span> <span class="tag">Meta Ads</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3 class="section-label">Education</h3>
+                    <div style="margin-bottom: 12px;">
+                        <div style="font-weight: 700; font-size: 14px;">Bachelor of Arts (BA)</div>
+                        <div style="font-size: 12px; color: var(--slate);">University of Sindh</div>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 14px;">Diploma in IT</div>
+                        <div style="font-size: 12px; color: var(--slate);">SBTE Karachi</div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3 class="section-label">Interests</h3>
+                    <div style="font-size: 13px; color: var(--slate);">
+                        <div style="margin-bottom: 8px;">🤖 <strong>AI Innovation</strong><br>Self-correcting agents</div>
+                        <div style="margin-bottom: 8px;">📸 <strong>Visual Storytelling</strong><br>Photography & Content</div>
+                        <div>🔍 <strong>RAG Systems</strong><br>Knowledge Retrieval</div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3 class="section-label">Certification</h3>
+                    <div style="background: var(--primary-glow); padding: 12px; border-radius: 12px; border-left: 4px solid var(--primary);">
+                        <div style="font-weight: 700; font-size: 13px; color: var(--primary);">Professional Photography</div>
+                        <div style="font-size: 11px; color: var(--slate);">Talha Ghouri Photography</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="content-area">
+                
+                <section style="margin-bottom: 50px;">
+                    <h3 class="section-label">Professional Summary</h3>
+                    <p style="font-size: 15px; color: var(--slate); text-align: justify;">
+                        Results-driven <strong>AI Automation Architect</strong> and <strong>Digital Marketing Specialist</strong> with extensive experience in building intelligent automation systems and driving business growth through technology. Expertise in developing AI-powered workflows, managing full-stack web development projects, and executing comprehensive digital marketing campaigns. Proven track record in <strong>real estate business management</strong>, social media strategy, and photography. Specialized in creating seamless automation ecosystems using advanced AI orchestration, delivering solutions <strong>10x faster</strong> than traditional development cycles while maintaining 99.9% accuracy.
+                    </p>
+                </section>
+
+                <section style="margin-bottom: 50px;">
+                    <h3 class="section-label">Professional Experience</h3>
+
+                    <div class="timeline-item">
+                        <div class="job-meta">
+                            <div>
+                                <span class="job-title">AI Developer & Automation Specialist</span>
+                                <span class="job-company">Pure Designers</span>
+                            </div>
+                            <span class="job-date">2024 — Present</span>
+                        </div>
+                        <ul class="job-desc">
+                            <li>Architected AI modules using Lovable/Bolt, reducing release cycles by 85%.</li>
+                            <li><strong>Business Lead (BTLK):</strong> Handled marketing activities and promotional campaigns</li>
+                            <li>Deployed recursive n8n workflows for autonomous B2B lead generation.</li>
+                            <li>Supported event planning, branding, and on-ground execution for Evento projects</li>
+                            <li>Created and maintained websites and web-based applications according to client and business requirements</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-meta">
+                            <div>
+                                <span class="job-title">Digital Marketing & Operations Manager</span>
+                                <span class="job-company">Remote / US Markets</span>
+                            </div>
+                            <span class="job-date">2023 — 2024</span>
+                        </div>
+                        <ul class="job-desc">
+                            <li>Orchestrated digital operations for 3 US businesses via GoHighLevel ecosystems.</li>
+                            <li>Built sentiment-based lead scoring increasing conversion efficiency by 40%.</li>
+                            <li>Implemented automated trust-building funnels resulting in peak platform ratings.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-meta">
+                            <div>
+                                <span class="job-title">Real Estate Business Owner & Manager</span>
+                                <span class="job-company">Self-Employed</span>
+                            </div>
+                            <span class="job-date">2020 — 2023</span>
+                        </div>
+                        <ul class="job-desc">
+                            <li>Founded and managed successful property business focused on acquisition and sales.</li>
+                            <li>Developed visual marketing strategies and high-end property photography listings.</li>
+                            <li>Built social media presence driving qualified leads and managing client lifecycles.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-meta">
+                            <div>
+                                <span class="job-title">Accountant</span>
+                                <span class="job-company">Estate1 Builders</span>
+                            </div>
+                            <span class="job-date">2019 — 2020</span>
+                        </div>
+                        <ul class="job-desc">
+                            <li>Managed complete accounting operations, general ledgers, and budgets.</li>
+                            <li>Streamlined invoice processing workflows, significantly improving cash flow.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-meta">
+                            <div>
+                                <span class="job-title">Data Entry Operator</span>
+                                <span class="job-company">Pakistan Navy</span>
+                            </div>
+                            <span class="job-date">2017 — 2019</span>
+                        </div>
+                        <ul class="job-desc">
+                            <li>Executed high-volume operations with 99.8% accuracy in a sensitive environment.</li>
+                            <li>Strict adherence to security protocols while maintaining confidential databases.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-meta">
+                            <div>
+                                <span class="job-title">Cashier</span>
+                                <span class="job-company">Habib Metropolitan Bank</span>
+                            </div>
+                            <span class="job-date">2016 — 2017</span>
+                        </div>
+                        <ul class="job-desc">
+                            <li>Processed daily banking transactions with zero discrepancies and high precision.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-meta">
+                            <div>
+                                <span class="job-title">Accountant</span>
+                                <span class="job-company">4 Star Marketing, Sukkur</span>
+                            </div>
+                            <span class="job-date">2015 — 2016</span>
+                        </div>
+                        <ul class="job-desc">
+                            <li>Managed journal entries, ledger maintenance, and month-end closing procedures.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section style="margin-bottom: 50px;">
+                    <h3 class="section-label">Key Projects</h3>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="project-header">Kuishi Getaways - Vacation Rental Platform</div>
+                            <p style="font-size: 13px; color: var(--slate); margin-bottom: 12px;">Full GoHighLevel ecosystem deployment for US markets. Built autonomous lead capture and intelligent booking sequences.</p>
+                            <div class="tag-cloud">
+                                <span class="tag">CRM Integration</span> <span class="tag">Workflow Automation</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">Culture Lab - Cultural Intelligence AI</div>
+                            <p style="font-size: 13px; color: var(--slate); margin-bottom: 12px;">Partnered with AAAI Pakistan for the nation's first Cultural Intelligence AI. Contributed to system architecture.</p>
+                            <div class="tag-cloud">
+                                <span class="tag">AI Development</span> <span class="tag">API Architecture</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">E-Commerce Solutions Portfolio</div>
+                            <p style="font-size: 13px; color: var(--slate); margin-bottom: 12px;">Designed and developed multiple custom WordPress websites with WooCommerce integration, including full UI/UX design and payment gateway setup.</p>
+                            <div class="tag-cloud">
+                                <span class="tag">WordPress</span> <span class="tag">WooCommerce</span> <span class="tag">UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="section-label">Continuous Learning</h3>
+                    <p style="font-size: 14px; color: var(--slate);">
+                        Specialized in <strong>Neural Orchestration</strong> and <strong>Prompt Architecture</strong>. Ongoing R&D in RAG pipelines, autonomous agent logic, and advanced LLM steering protocols.
+                    </p>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
