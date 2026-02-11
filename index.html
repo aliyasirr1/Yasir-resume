@@ -27,7 +27,13 @@
             background-color: var(--light-bg);
             color: var(--dark);
             line-height: 1.6;
-            padding: 40px 20px;
+            padding: 10px;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 40px 20px;
+            }
         }
 
         .resume-card {
@@ -44,12 +50,23 @@
         /* --- MODERN HEADER --- */
         .header {
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            padding: 60px;
+            padding: 40px 20px;
             color: white;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 40px;
+            text-align: center;
+            gap: 25px;
             position: relative;
+        }
+
+        @media (min-width: 900px) {
+            .header {
+                padding: 60px;
+                flex-direction: row;
+                text-align: left;
+                gap: 40px;
+            }
         }
 
         .header::after {
@@ -64,21 +81,36 @@
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 40px;
+            width: 140px;
+            height: 140px;
+            border-radius: 35px;
             object-fit: cover;
             border: 4px solid rgba(255, 255, 255, 0.1);
             transform: rotate(-3deg);
             box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 900px) {
+            .profile-img {
+                width: 160px;
+                height: 160px;
+                border-radius: 40px;
+            }
         }
 
         .header-info h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 42px;
+            font-size: 32px;
             font-weight: 700;
             letter-spacing: -1px;
             margin-bottom: 8px;
+        }
+
+        @media (min-width: 900px) {
+            .header-info h1 {
+                font-size: 42px;
+            }
         }
 
         .header-info .title-tag {
@@ -88,32 +120,67 @@
             padding: 4px 16px;
             border-radius: 99px;
             font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 13px;
+            margin-bottom: 15px;
         }
 
         .contact-grid {
             display: flex;
-            gap: 24px;
+            flex-direction: column;
+            gap: 12px;
             font-size: 13px;
-            opacity: 0.8;
-            flex-wrap: wrap;
+            opacity: 0.9;
+        }
+
+        @media (min-width: 600px) {
+            .contact-grid {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .contact-grid {
+                justify-content: flex-start;
+            }
         }
 
         /* --- CONTENT LAYOUT --- */
         .main-layout {
             display: grid;
-            grid-template-columns: 340px 1fr;
+            grid-template-columns: 1fr; /* Default for mobile */
+        }
+
+        @media (min-width: 900px) {
+            .main-layout {
+                grid-template-columns: 340px 1fr;
+            }
         }
 
         .sidebar {
             background: #fdfdfd;
-            padding: 40px;
-            border-right: 1px solid var(--border);
+            padding: 30px 20px; /* Reduced padding for mobile */
+            border-bottom: 1px solid var(--border);
+        }
+
+        @media (min-width: 900px) {
+            .sidebar {
+                padding: 40px;
+                border-bottom: none;
+                border-right: 1px solid var(--border);
+            }
         }
 
         .content-area {
-            padding: 60px;
+            padding: 30px 15px; /* Significant reduction in padding for mobile to fix "narrow boxes" */
+        }
+
+        @media (min-width: 900px) {
+            .content-area {
+                padding: 50px 60px;
+            }
         }
 
         .section-label {
@@ -138,7 +205,7 @@
 
         /* --- SKILLS & TAGS --- */
         .skill-group {
-            margin-bottom: 32px;
+            margin-bottom: 35px;
         }
 
         .skill-bar-container {
@@ -193,7 +260,7 @@
         /* --- TIMELINE --- */
         .timeline-item {
             position: relative;
-            padding-left: 30px;
+            padding-left: 25px;
             margin-bottom: 40px;
         }
 
@@ -227,11 +294,17 @@
 
         .job-meta {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 600px) {
+            .job-meta {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: baseline;
+            }
         }
 
         .job-title {
@@ -248,13 +321,14 @@
         }
 
         .job-date {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--slate);
-            font-weight: 600;
+            font-weight: 700;
             background: #f1f5f9;
             padding: 3px 12px;
             border-radius: 20px;
             text-transform: uppercase;
+            width: fit-content;
         }
 
         .job-desc {
@@ -267,7 +341,7 @@
         .job-desc li {
             position: relative;
             padding-left: 20px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .job-desc li::before {
@@ -310,17 +384,11 @@
         @media print {
             body { background: white; padding: 0; }
             .resume-card { box-shadow: none; border-radius: 0; max-width: 100%; }
-            .header { background: #000 !important; -webkit-print-color-adjust: exact; padding: 40px; }
+            .header { background: #000 !important; -webkit-print-color-adjust: exact; padding: 40px; flex-direction: row; text-align: left; }
+            .main-layout { grid-template-columns: 300px 1fr; }
             .sidebar { padding: 20px; }
             .content-area { padding: 40px; }
             .job-date { background: #eee !important; border: 1px solid #ccc; }
-        }
-
-        @media (max-width: 900px) {
-            .main-layout { grid-template-columns: 1fr; }
-            .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
-            .header { flex-direction: column; text-align: center; padding: 40px; }
-            .contact-grid { justify-content: center; }
         }
     </style>
 </head>
